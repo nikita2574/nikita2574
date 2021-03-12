@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    const element = (<div><h1>IIo7oDa</h1></div>);
+    ReactDOM.render(element, document.getElementById('root'));
+
+    var card = new Object();
+    card.ytro = [-2,0,"тепленько"]
+    card.day =  [+3,7,"тепло"]
+    card.ve4er = [-5,2,"прохладно"]
+    card.night = [-21,8,"холодно"]
+  
+    var background = {
+      "ytro":"#40E0D0",
+      "day":"#FF7F50",
+      "ve4er":"#BA55D3",
+      "night":"#000080"
+    }
+    var pic = {
+        "temp":"https://img.icons8.com/fluent/72/thermometer-up.png",
+        "тепло":"https://img.icons8.com/fluent/2x/weather.png",
+        "холодно":"https://img.icons8.com/color/2x/waning-gibbous.png",
+        "прохладно":"https://img.icons8.com/fluent/2x/heavy-rain.png",
+        "тепленько":"https://img.icons8.com/fluent/2x/happy-cloud.png"
+    }
+  class Weathers_cards extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      var weather_card = {
+        "margin":"15px",
+        "width":"350px",
+        "height":"150px",
+        "background":background[this.props.time],
+        "display":"flex",
+        "flex-direction":"row",
+        "alignItems":"center",
+        "justifyContent":"space-around",
+        "borderRadius":"22px"
+      }
+      var style_back = {
+       "color":"#40E0D0",
+       "backgroundImage":"url('https://cdn.pixabay.com/photo/2014/02/02/01/17/snow-256502_960_720.jpg')", 
+      }
+      var style = {
+        "margin":"0px",
+        "width":"55px",
+        "height":"55px",
+      }
+      var style_2 = {
+        "width":"40px",
+        "height":"40px",
+      }
+      return (
+        <div style={weather_card}>
+          <div>
+            <h3>{this.props.title}</h3>
+            <div style={{"display":"flex","alignItems":"center"}}>
+              <h2>{this.props.temp}° С  </h2>
+              <img src={pic["temp"]} alt={"temp"} style={style_2}/>
+            </div>
+          </div>
+          <div style={{"alignItems":"center"}}>
+            <img src={pic[this.props.icon]} alt={this.props.icon} style={style}/>
+            <h3 style={{"margin":"1"}}>{this.props.osad} mm</h3>
+          </div>
+        </div>
+        );
+    }
+  }
+  function cards(pog){
+    return <div style={{"display":"flex"}}>    
+      <Weathers_cards temp={pog.ytro[0]} osad={pog.ytro[1]} icon={pog.ytro[2]} time="ytro" title="Утро"/>
+      <Weathers_cards temp={pog.day[0]} osad={pog.day[1]} icon={pog.day[2]} time="day" title="День"/>
+      <Weathers_cards temp={pog.ve4er[0]} osad={pog.ve4er[1]} icon={pog.ve4er[2]} time="ve4er" title="Вечер"/>
+      <Weathers_cards temp={pog.night[0]} osad={pog.night[1]} icon={pog.night[2]} time="night" title="Ночь"/>
+    </div>
+  }
+    ReactDOM.render(cards(card), document.getElementById('root'));
+    </script>
+</body>
+</html>
